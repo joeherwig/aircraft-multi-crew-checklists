@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="74.846153mm"
+   height="74.846153mm"
+   viewBox="0 0 74.846153 74.846153"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="icon_rotary-encoder.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.73701597"
+     inkscape:cx="90.907121"
+     inkscape:cy="366.34213"
+     inkscape:window-width="2560"
+     inkscape:window-height="1351"
+     inkscape:window-x="2551"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-34.542309,-76.173077)">
+    <path
+       id="rect1287"
+       style="fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.11673;stroke-dasharray:none"
+       d="M 55.796925,95.415196 V 111.85643 H 40.121299 v 1.11647 H 56.913782 V 96.531668 H 75.009715 V 112.9729 H 95.278191 V 96.531668 h 8.531279 V 95.415196 H 94.161333 V 111.85643 H 76.126572 V 95.415196 Z m -6.69037,18.804214 v 16.44123 h -8.985256 v 1.11647 h 10.102113 v -16.44123 h 18.095932 v 16.44123 H 88.58782 v -16.44123 h 15.22165 v -1.11647 H 87.470963 v 16.44123 H 69.436201 v -16.44123 z" />
+    <path
+       style="color:#000000;fill:#000000;-inkscape-stroke:none"
+       d="m 71.964844,76.173828 c -20.653368,0 -37.421875,16.768507 -37.421875,37.421872 0,20.65337 16.768507,37.42383 37.421875,37.42383 20.653368,0 37.423826,-16.77046 37.423826,-37.42383 0,-20.653365 -16.770458,-37.421872 -37.423826,-37.421872 z m 0,2.5 c 19.302269,0 34.923826,15.619606 34.923826,34.921872 0,19.30227 -15.621557,34.92383 -34.923826,34.92383 -19.302269,0 -34.921875,-15.62156 -34.921875,-34.92383 0,-19.302266 15.619606,-34.921872 34.921875,-34.921872 z"
+       id="path327" />
+  </g>
+</svg>

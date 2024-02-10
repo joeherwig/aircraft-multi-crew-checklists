@@ -1,0 +1,96 @@
+@use 'fonts'
+@use 'menu'
+@use 'darkmode'
+
+body
+  margin: 0px
+  font-family: Lato
+
+::-webkit-scrollbar 
+  width: 10px
+
+::-webkit-scrollbar-track
+  background: #eeeeee
+
+::-webkit-scrollbar-thumb
+  background-color: #999999
+  border-radius: 5px
+  border: 1px solid #eeeeee
+
+h1, h2, h3, h4, h5, #site-identity
+  font-family: Rajdhani
+  clear: both
+
+h2, h3
+  margin-top: 2em
+
+a
+  color: #597D97
+
+#header-line, #footer
+  min-height: 50px
+  display: flex
+  width: 100%
+  flex-flow: row wrap
+  padding: 1em
+#site-logo *, #site-identity *
+  text-decoration: none
+  cursor: hand
+#site-logo
+  width: 50px
+  height: 50px
+  margin-right: 1em
+  background-image: url('../img/favicon.svg')
+#site-title
+  font-weight: bold
+  font-size: 1.75em
+  clear: both
+header > img
+  margin: 0 0 1em 0
+  max-width: 100%
+  width: 100%
+  max-height: 50vh
+  padding: 0
+  object-fit: cover
+  vertical-align: middle
+
+#content
+  max-width: 1000px
+  margin: auto
+  padding: 8px
+
+section > h1 
+  font-size: 36pt
+  font-weight: 400
+  text-align: center
+  margin: 100px 0 10px 0
+  word-wrap: break-word
+
+img
+  max-width: 100%
+
+#content details
+  display: none
+li
+  margin: 0.5em
+#toc *, #homepageToc *
+  list-style-type: none
+  & li 
+    margin-top: 0.5em
+  & li + ul
+    margin-top: 0.5em
+#homepageToc
+  max-width: 400px
+  margin: auto
+  & ul
+    padding-left: 0px
+    margin-top: 1em
+  & li
+    margin-top: 1em
+
+sup, sub
+  margin-right: 1em
+
+figcaption
+  font-style: italic
+  color: grey

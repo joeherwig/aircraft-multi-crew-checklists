@@ -1,0 +1,48 @@
+doctype html
+html(lang="en")
+  head
+    block meta
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name='apple-mobile-web-app-capable' content='yes')
+    meta(name='apple-mobile-web-app-status-bar-style' content='black-translucent')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    meta(name="robots" content="index, follow")
+    meta(name="msvalidate.01" content="047592C785D6EA22857A355D29D455FE")
+    link(rel="icon" type="image/svg+xml" href="img/favicon.svg")
+    link(rel="icon" type="image/png" href="img/favicon.png")
+    link(href="css/style.css" rel="stylesheet")
+    script(src="js/generate-toc.js")
+    block scripts
+  
+  body
+
+    header
+      #header-line
+        #site-logo(onclick="location.href='index.html'")
+        #site-identity(onclick="location.href='index.html'")
+          #site-title Joe's Homecockpit 
+          #site-slug design.build.fly
+        .menu-wrap
+          input.toggler(type='checkbox')
+          .hamburger
+            div
+          .menu
+            include menu.pug
+
+      block header
+
+    #content
+      details 
+        summary ToC
+        #toc
+      block content
+
+    .backtotop(style='bottom: -100px;')
+      svg.icon.icon-up(aria-hidden='true' role='img')
+        use(href='#icon-up' xlink:href='#icon-up')
+
+    #footer
+      block footer
+        small (c) by Joe Herwig
+

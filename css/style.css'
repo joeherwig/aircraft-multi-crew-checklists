@@ -1,0 +1,359 @@
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap");
+/* latin-ext */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/lato/S6uyw4BMUTPHjxAwXjeu.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/lato/S6uyw4BMUTPHjx4wXg.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/lato/S6u9w4BMUTPHh6UVSwaPGR_p.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/lato/S6u9w4BMUTPHh6UVSwiPGQ.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/rajdhani/LDIxapCSOBg7S-QT7p4GM-aUWA.woff2) format("woff2");
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/rajdhani/LDIxapCSOBg7S-QT7p4JM-aUWA.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/rajdhani/LDIxapCSOBg7S-QT7p4HM-Y.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/rajdhani/LDI2apCSOBg7S-QT7pb0EPOqeef2kg.woff2) format("woff2");
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/rajdhani/LDI2apCSOBg7S-QT7pb0EPOleef2kg.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 500;
+  src: url(../fonts/rajdhani/LDI2apCSOBg7S-QT7pb0EPOreec.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* devanagari */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/rajdhani/LDI2apCSOBg7S-QT7pa8FvOqeef2kg.woff2) format("woff2");
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+}
+/* latin-ext */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/rajdhani/LDI2apCSOBg7S-QT7pa8FvOleef2kg.woff2) format("woff2");
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: "Rajdhani";
+  font-style: normal;
+  font-weight: 700;
+  src: url(../fonts/rajdhani/LDI2apCSOBg7S-QT7pa8FvOreec.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+:root {
+  --primary-color: rgba(20, 177, 177, 0.5);
+  --overlay-color: rgba(24,39,51,0.95);
+  --menu-speed: 0.5s;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.menu-wrap {
+  position: fixed;
+  top: 0;
+  right: 90px;
+  z-index: 1;
+}
+
+.menu-wrap .toggler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  opacity: 0;
+}
+
+.menu-wrap .hamburger {
+  position: absolute;
+  float: right;
+  margin-right: 50px;
+  top: 0px;
+  z-index: 1;
+  width: 60px;
+  height: 60px;
+  padding: 1rem;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hamburger line */
+.menu-wrap .hamburger > div {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+/* Top and bottom lines */
+.menu-wrap .hamburger > div:before,
+.menu-wrap .hamburger > div:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -10px;
+  width: 100%;
+  height: 2px;
+  background: inherit;
+}
+
+/* Moves line down */
+.menu-wrap .hamburger > div:after {
+  top: 10px;
+}
+
+/* Toggler animate */
+.menu-wrap .toggler:checked + .hamburger > div {
+  transform: rotate(135deg);
+}
+
+/* Turn Lines into X */
+.menu-wrap .toggler:checked + .hamburger > div:before,
+.menu-wrap .toggler:checked + .hamburger > div:after {
+  top: 0;
+  transform: rotate(90deg);
+}
+
+/* Rotate on hover when checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div {
+  transform: rotate(225deg);
+}
+
+/* Show menu */
+.menu-wrap .toggler:checked ~ .menu {
+  visibility: visible;
+}
+
+.menu-wrap .toggler:checked ~ .menu > div {
+  transform: scale(1);
+  transition-duration: var(--menu-speed);
+}
+
+.menu-wrap .toggler:checked ~ .menu > div > div {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  overflow-y: none;
+}
+
+.menu-wrap .menu > div {
+  background-color: var(--overlay-color);
+  width: 110vw;
+  min-height: 100%;
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0);
+  transition: all 0.4s ease;
+  position: absolute;
+}
+
+.menu-wrap .menu > div > div {
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.menu-wrap .menu li {
+  list-style-type: none;
+  color: #9d9d9d;
+  font-size: 1.5rem;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.menu-wrap .menu li > a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.4s ease;
+}
+
+a {
+  text-decoration: none;
+}
+
+li > ul {
+  margin-left: 20px;
+}
+
+body {
+  margin: 0px;
+  font-family: Lato;
+}
+
+h1, h2, h3, h4, h5, #site-identity {
+  font-family: Rajdhani;
+  line-height: 1.35;
+}
+
+h2, h3 {
+  margin-top: 2em;
+}
+
+a {
+  color: #597D97;
+}
+
+#header-line, #footer {
+  min-height: 50px;
+  display: flex;
+  width: 100%;
+  flex-flow: row wrap;
+  padding: 1em;
+}
+
+#site-logo *, #site-identity * {
+  text-decoration: none;
+  color: black;
+  cursor: hand;
+}
+
+#site-logo {
+  width: 50px;
+  height: 50px;
+  margin-right: 1em;
+  background-image: url("https://joeshomeco-f386a8f053491f8d9816-endpoint.azureedge.net/blobjoeshomecob9dc4c91d4/wp-content/uploads/2023/01/JOE-Simtech-Logo_50x50.svg");
+}
+
+#site-title {
+  font-weight: bold;
+  font-size: 1.75em;
+  clear: both;
+}
+
+header > img {
+  margin: 0 0 1em 0;
+  max-width: 100%;
+  width: 100%;
+  max-height: 50vh;
+  padding: 0;
+  object-fit: cover;
+  vertical-align: middle;
+}
+
+#content {
+  max-width: 1000px;
+  margin: auto;
+  padding: 8px;
+}
+
+#counter {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  margin-bottom: 1.5em;
+}
+#counter > div {
+  flex: 1 1 200;
+  text-align: center;
+  margin: 1em;
+}
+#counter > div img, #counter > div object {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.counter-title {
+  margin-top: 0.5rem;
+}
+
+section > h1 {
+  font-size: 62;
+  font-weight: 400;
+  text-align: center;
+  margin: 100px 0 10px 0;
+  word-wrap: break-word;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*# sourceMappingURL=style.css'.map */

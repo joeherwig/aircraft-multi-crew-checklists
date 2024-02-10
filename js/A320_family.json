@@ -1,0 +1,65 @@
+{
+  "aircraft": "A320 family",
+  "checklists": [
+    {
+      "name": "Cockpit preparation",
+      "triggeredBy": "Departure briefing completed",
+      "items": [
+        {
+          "checkpoint": "Gear pins & covers",
+          "value": "removed"
+        },
+        {
+          "checkpoint": "Fuel quantity",
+          "value": "_____kg/lbs"
+        },
+        {
+          "checkpoint": "Seatbelt signs",
+          "value": "on"
+        },
+        {
+          "checkpoint": "ADIRS",
+          "value": "NAV"
+        },
+        {
+          "checkpoint": "Baro Ref",
+          "value": "_____ 3x"
+        }
+      ]
+    },
+    {
+      "name": "Before Start",
+      "triggeredBy": "Departure briefing completed",
+      "items": [
+        {
+          "checkpoint": "Beacon",
+          "value": "on",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "ATC",
+          "value": "Set for operation",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Windows",
+          "value": "check closed"
+        },
+        {
+          "checkpoint": "Doors/slides",
+          "value": "check closed/armed"
+        },
+        {
+          "checkpoint": "Thrust levers",
+          "value": "idle",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "Parking brake handle",
+          "value": "on",
+          "role":"pf"
+        }
+      ]
+    }
+  ]
+}

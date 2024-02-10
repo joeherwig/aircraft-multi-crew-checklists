@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Multi-crew (SOP) checklist</title>
+    <meta name="description" content="my blog about building a home cockpit">
+    <meta name="keywords" content="homecockpit, home cockpit, blog, building">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="msvalidate.01" content="047592C785D6EA22857A355D29D455FE">
+    <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link href="css/style.css" rel="stylesheet">
+    <script src="js/generate-toc.js"></script>
+    <script src="js/checklist.js"></script>
+    <!--script(src="js/test.js")-->
+  </head>
+  <body>
+    <header>
+      <div id="header-line">
+        <div id="site-logo" onclick="location.href='index.html'"></div>
+        <div id="site-identity" onclick="location.href='index.html'">
+          <div id="site-title">Joe's Homecockpit </div>
+          <div id="site-slug">design.build.fly</div>
+        </div>
+        <div class="menu-wrap">
+          <input class="toggler" type="checkbox">
+          <div class="hamburger">
+            <div></div>
+          </div>
+          <div class="menu">
+            <div>
+              <div>
+                <ul>
+                  <li><a href="index.html">Home</a>
+                    <ul>
+                      <li><a href="how-to-start.html">How to start?</a></li>
+                      <li><a href="building-principles.html">My building principles</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="homecockpit-shell.html">Shell + Screen</a></li>
+                  <li>Overhead
+                    <ul>
+                      <li>Hardware
+                        <ul>
+                          <li><a href="overhead.html">The overhead panel</a></li>
+                          <li><a href="korry-alikes.html">Korry-alike switches</a></li>
+                        </ul>
+                      </li>
+                      <li>Software
+                        <ul>
+                          <li><a href="wifi-node.html">wifi-node for annunciators</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>Glare shield
+                    <ul>
+                      <li>Hardware
+                        <ul>
+                          <li> <a href="G1000nxi.html">G1000nxi controls</a></li>
+                        </ul>
+                      </li>
+                      <li>Software
+                        <ul>
+                          <li><a href="https://github.com/joeherwig/A32nx-LINDA-aircraft-module/blob/main/README.md" target="a32nx-linda-module">A32nx LINDA Module for VRinsight MCP2a</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>MIP
+                    <ul>
+                      <li>Hardware
+                        <ul>
+                          <li><a href="screen-gauge-covers.html">screen gauge covers</a></li>
+                          <li>G1000 controls</li>
+                        </ul>
+                      </li>
+                      <li>Software
+                        <ul>
+                          <li><a href="portable-sim-panels.html">portable sim panels</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li> <a href="pedestal.html">Pedestal</a>
+                    <ul>
+                      <li>Hardware
+                        <ul>
+                          <li> <a href="thrust-lever-kit.html">Thrust lever kit</a></li>
+                          <li>Engine start panel</li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                  <li> <a href="audio.html">Audio </a></li>
+                  <li> <a href="phraseology-trainer.html">ICAO phraseology trainer</a></li>
+                  <!--lia(href='#') Contact
+                  -->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--img(src="./img/header.jpg" alt="cockpit view from 747 to LA")-->
+      <style>
+        .intro {
+          //display: none;
+        }
+        .item {
+          display: flex;
+          padding: 2em 0 1em 5px;
+        }
+        .item .triggeredBy {
+          text-align: right;
+        }
+        .item .check {
+          flex: 3 1 auto;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .item .check:after {
+          font-family: Monospace;
+          opacity: 0.25;
+          content: " ..........................................................................................................................................";
+        }
+        .item .value {
+          flex: 1 1 auto;
+          padding-left: 1em;
+        }
+        .item .value:after {
+          padding-left: 5px;
+          color: #333333;
+          content: "☐";
+        }
+        
+        .item.completed {
+          opacity: 0.5;
+          color: #517051;
+        }
+        .item.completed .value:after {
+          text-decoration: none;
+          content: "☑";
+          color: beige;
+        }
+        
+        .pf {
+          border-left: 2px solid #ff00ff75;
+        }
+        
+        .pm {
+          border-left: 2px solid #ffff00b0;
+        }
+        
+        
+      </style>
+    </header>
+    <div id="content">
+      <details> 
+        <summary>ToC</summary>
+        <div id="toc"></div>
+      </details>
+      <joeherwig-checklist></joeherwig-checklist>
+    </div>
+    <div class="backtotop" style="bottom: -100px;">
+      <svg class="icon icon-up" aria-hidden="true" role="img">
+        <use href="#icon-up" xlink:href="#icon-up"></use>
+      </svg>
+    </div>
+    <div id="footer"><small>(c) by Joe Herwig</small>
+    </div>
+  </body>
+</html>
