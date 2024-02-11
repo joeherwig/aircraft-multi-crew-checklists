@@ -1,8 +1,4 @@
 (function() {
-  /**
-   * Cloning contents from a &lt;template&gt; element is more performant
-   * than using innerHTML because it avoids addtional HTML parse costs.
-   */
   const template = document.createElement('template');
   styles = `
     <style>
@@ -66,14 +62,20 @@
         border-left: 2px solid #ffff00b0;
       }
 
+      .triggeredBy {
+        color: #666666;
+        word-break: break-all;
+        white-space: nowrap;
+
+      }
+
       </style>`
 
     template.innerHTML = styles + `
       <div class="filter">
         <div class="cpt"><a href="?">ALL</a></div>
         <div class="fo"><a href="?fo">CPT</a></div>     
-        <div class="fo"><a href="?cpt">FO</a></div>
-        <div class="resetBtn"><a href="?reset">reset</a></div>`;
+        <div class="fo"><a href="?cpt">FO</a></div></div>`;
   class checklist extends HTMLElement {
     constructor() {
       super();
@@ -106,7 +108,7 @@
         .then(clConfig => {
           checklistHtml += "<h1>"+clConfig.aircraft+"</h1>";
           clConfig.checklists.forEach(checklist => {
-            checklistHtml += "\n<div id='"+checklist.name.replace(/\s/g,'')+"'>\n  <h2>"+checklist.name+"</h2>\n  <p>Triggered by: "+checklist.triggeredBy+"</p>";
+            checklistHtml += "\n<div id='"+checklist.name.replace(/\s/g,'')+"'>\n  <h2>"+checklist.name+"</h2>\n  <p class='triggeredBy'>"+checklist.triggeredBy+"</p>";
             checklist.items.forEach(item =>{
               let roleClass = item.role !== undefined ? " " + item.role : "";
               console.log(roleClass);
@@ -115,14 +117,12 @@
             checklistHtml += "\n</div>"
           });
           console.log(checklistHtml);
+          checklistHtml += `<div class="filter"><div class="resetBtn"><a href="?reset">reset</a></div></div>`;
           template.innerHTML += "\n\n"+checklistHtml;
           let shadow = document.querySelector('joeherwig-checklist');
           shadow.shadowRoot.innerHTML = template.innerHTML;
           shadow.shadowRoot.querySelectorAll('.item').forEach(checklistItem => {
             checklistItem.addEventListener("click", (event) => {
-                //event.currentTarget.classList.contains("completed") ? event.currentTarget.classList.remove("completed") : event.currentTarget.classList.add("completed");
-              /**/ 
-              /**/
               let newArrayItem = checklistItem.querySelector('.check').textContent.replace(/\s/g,'').replace(/&/g,'');
               console.log(typeof(checkedItems) + ' ' + JSON.stringify(checkedItems)+' gets added : '+newArrayItem);
               if (event.currentTarget.classList.contains("completed")) {
