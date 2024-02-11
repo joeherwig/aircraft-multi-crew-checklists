@@ -60,6 +60,61 @@
           "role":"pf"
         }
       ]
+    },
+    {
+      "name": "After Start",
+      "triggeredBy": "Hand signal from ground personnel",
+      "items": [
+        {
+          "checkpoint": "Eng mode selector",
+          "value": "Normal",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "APU bleed",
+          "value": "Off",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "Anti ice",
+          "value": "As required",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "APU master switch",
+          "value": "Off",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "Spoilers",
+          "value": "Arm",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "Rudder",
+          "value": "Check Zero ±0.3",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "Flaps",
+          "value": "Set",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "Pitch trim",
+          "value": "Set",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "ECAM status",
+          "value": "check"
+        },
+        {
+          "checkpoint": "NW STRG DISC",
+          "value": "Check not displayed",
+          "role": "pf"
+        }
+      ]
     }
   ]
 }
