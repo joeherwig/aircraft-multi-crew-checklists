@@ -6,9 +6,17 @@
         display: flex;
         flex-flow: row-wrap;
         text-align: center;
+        justify-content: center;
       }
-      .filter div {
+      .filter a{
         flex: 1 1 auto;
+        margin: 1em;
+        color: black;
+        text-decoration: none;
+        word-break: break-all;
+        white-space: nowrap;
+        padding: .5em;
+        border-radius: .25em;
       }
       .intro {
         //display: none;
@@ -54,11 +62,11 @@
         color: beige;
       }
 
-      .pf {
+      .item.pf {
         border-left: 2px solid #ff00ff75;
       }
 
-      .pm {
+      .item.pm {
         border-left: 2px solid #ffff00b0;
       }
 
@@ -68,14 +76,33 @@
         white-space: nowrap;
 
       }
-
+      .filter .all a{
+        border: 1px solid silver;
+        color: silver;
+      }
+      .filter .pf a{
+        background: #ff00ff75;
+      }
+      .filter .pm a{
+        background: #ffff00b0;
+      }
+      .resetBtn {
+        margin-top: 5em;
+      }
+      .resetBtn a{
+        background: #761919;
+        color: white;
+      }
+      .hidden {
+        display: none;
+      }
       </style>`
 
     template.innerHTML = styles + `
       <div class="filter">
-        <div class="cpt"><a href="?">ALL</a></div>
-        <div class="fo"><a href="?fo">CPT</a></div>     
-        <div class="fo"><a href="?cpt">FO</a></div></div>`;
+        <div class="all"><a href="?">BOTH</a></div>
+        <div class="pf"><a href="?hideRole=pm">Pilot flying</a></div>     
+        <div class="pm"><a href="?hideRole=pf">Pilot monitoring</a></div></div>`;
   class checklist extends HTMLElement {
     constructor() {
       super();
@@ -83,7 +110,6 @@
       this.shadowRoot.append(template.content.cloneNode(true));
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
-      const hideClass = urlParams.toString().replace("=","");
       let initalized = false;
       window.onload = function init() {
         if (urlParams.has('reset')) { 
@@ -91,7 +117,8 @@
           urlParams.delete('reset');
           window.location = window.location.href.split("?")[0];
         };
-
+        let hideRole = urlParams.has('hideRole') ? urlParams.get('hideRole') : "";
+        console.log(hideRole);
 
         let url = "js/A320_family.json";
         let checklistHtml = "";
@@ -100,7 +127,6 @@
         async function getConfig() {
           const response = await fetch(url);
           const clConfig = await response.json();
-          console.log(clConfig);
           return clConfig;
         };
 
@@ -111,20 +137,17 @@
             checklistHtml += "\n<div id='"+checklist.name.replace(/\s/g,'')+"'>\n  <h2>"+checklist.name+"</h2>\n  <p class='triggeredBy'>"+checklist.triggeredBy+"</p>";
             checklist.items.forEach(item =>{
               let roleClass = item.role !== undefined ? " " + item.role : "";
-              console.log(roleClass);
               checklistHtml += "\n  <div class='item" + roleClass +"' id='"+item.checkpoint.replace(/\s/g,'').replace(/&/g,'')+"'>\n    <div class='check'>"+item.checkpoint+"</div>\n    <div class='value'>"+item.value+"</div>\n  </div>";
             })
             checklistHtml += "\n</div>"
           });
-          console.log(checklistHtml);
-          checklistHtml += `<div class="filter"><div class="resetBtn"><a href="?reset">reset</a></div></div>`;
+          checklistHtml += `<div class="filter"><div class="resetBtn"><a href="?reset">reset checklist</a></div></div>`;
           template.innerHTML += "\n\n"+checklistHtml;
           let shadow = document.querySelector('joeherwig-checklist');
           shadow.shadowRoot.innerHTML = template.innerHTML;
           shadow.shadowRoot.querySelectorAll('.item').forEach(checklistItem => {
             checklistItem.addEventListener("click", (event) => {
               let newArrayItem = checklistItem.querySelector('.check').textContent.replace(/\s/g,'').replace(/&/g,'');
-              console.log(typeof(checkedItems) + ' ' + JSON.stringify(checkedItems)+' gets added : '+newArrayItem);
               if (event.currentTarget.classList.contains("completed")) {
                 event.currentTarget.classList.remove("completed")
                 checkedItems = checkedItems.filter(item => item !== newArrayItem);
@@ -134,20 +157,16 @@
               }
               localStorage.setItem("checkedItems", JSON.stringify(checkedItems));
             });
-            if(hideClass.length) {
-              document.querySelectorAll('.'+hideClass).forEach(checklistItem => {
-                checklistItem.classList.contains(hideClass) ? checklistItem.classList.remove("hidden") : checklistItem.classList.add("hidden"); 
-                checklistItem.classList.add("hidden");
-                console.log(checklistItem.classList.contains(hideClass));
-              });
-            }
           });
+          if(hideRole) {
+            shadow.shadowRoot.querySelectorAll('.item.' + hideRole).forEach(checklistItem => {
+              checklistItem.classList.add("hidden");
+            });
+          }
           let checkedItems = JSON.parse(localStorage.getItem("checkedItems")) ? JSON.parse(localStorage.getItem("checkedItems")) : []; 
           if (!initalized && checkedItems.length > 0) { 
             checkedItems.forEach(checkedElement => {
-              console.log(checkedElement);
               const checkedNode = shadow.shadowRoot.querySelector('#'+checkedElement);
-              console.log(shadow.shadowRoot.querySelector('#'+checkedElement));
               checkedNode.classList.add("completed");
             })
             initalized = true;
