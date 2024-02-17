@@ -170,12 +170,17 @@
               } else {
                 event.currentTarget.classList.add("completed")
                 checkedItems.push(newArrayItem);
+                
+                let nextChecklist = event.currentTarget.parentElement.parentElement.nextElementSibling;
+                if (event.currentTarget.parentElement.querySelectorAll('.item:not(.completed)').length <= 0) {
+                  nextChecklist.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+                }
               }
               localStorage.setItem("checkedItems", JSON.stringify(checkedItems));
-              console.log(JSON.stringify(checkedItems));
             });
           });
-          
+
+
           /* --  */
           shadow.shadowRoot.querySelector('#stdBtn').addEventListener("click", (event) => {
             updateChecklist(["ADIRS","Seatbeltsigns","ATC","Windows"]);
