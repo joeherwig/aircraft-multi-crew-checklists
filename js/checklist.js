@@ -96,6 +96,12 @@
       .hidden {
         display: none;
       }
+      .pfChecked {
+        border-left: 5px solid rgba(69,145,80,1);
+      }
+      .pmChecked {
+        border-right: 5px solid rgba(69,145,80,1);
+      }
       </style>`
 
     template.innerHTML = styles + `
@@ -111,6 +117,8 @@
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
       let initalized = false;
+      let checkedItems = [];
+
       window.onload = function init() {
         if (urlParams.has('reset')) { 
           localStorage.clear('checkedItems')
@@ -118,8 +126,6 @@
           window.location = window.location.href.split("?")[0];
         };
         let hideRole = urlParams.has('hideRole') ? urlParams.get('hideRole') : "";
-        console.log(hideRole);
-
         let url = "js/A320_family.json";
         let checklistHtml = "";
         let clConfig = {};
@@ -130,24 +136,34 @@
           return clConfig;
         };
 
-        getConfig()
-        .then(clConfig => {
+        async function log(clcompleted){
+          //clcompleted = document.querySelector('joeherwig-checklist').shadowRoot.querySelector('#BaroRef').parentElement.querySelectorAll('.item:not(.completed)').length > 0? "stay" : "next checklist";
+          console.log(clcompleted);
+        }
+
+        async function buildChecklistFromJson(clConfig) {
           checklistHtml += "<h1>"+clConfig.aircraft+"</h1>";
+          checklistHtml += `<div class="filter"><div id="stdBtn">setToStandard</div></div>`;
           clConfig.checklists.forEach(checklist => {
-            checklistHtml += "\n<div id='"+checklist.name.replace(/\s/g,'')+"'>\n  <h2>"+checklist.name+"</h2>\n  <p class='triggeredBy'>"+checklist.triggeredBy+"</p>";
+            checklistHtml += "\n<div id='"+checklist.name.replace(/[\W_]+/g,'')+"'>\n  <h2>"+checklist.name+"</h2>\n  <div class='"+checklist.name.replace(/[\W_]+/g,'')+"Cl'><p class='triggeredBy'>"+checklist.triggeredBy+"</p>";
             checklist.items.forEach(item =>{
               let roleClass = item.role !== undefined ? " " + item.role : "";
-              checklistHtml += "\n  <div class='item" + roleClass +"' id='"+item.checkpoint.replace(/\s/g,'').replace(/&/g,'')+"'>\n    <div class='check'>"+item.checkpoint+"</div>\n    <div class='value'>"+item.value+"</div>\n  </div>";
+              checklistHtml += "\n  <div class='item" + roleClass +"' id='"+item.checkpoint.replace(/[\W_]+/g,'').replace(/&/g,'')+"'>\n    <div class='check'>"+item.checkpoint+"</div>\n    <div class='value'>"+item.value+"</div>\n  </div>";
             })
-            checklistHtml += "\n</div>"
+            checklistHtml += "\n</div></div>"
           });
           checklistHtml += `<div class="filter"><div class="resetBtn"><a href="?reset">reset checklist</a></div></div>`;
           template.innerHTML += "\n\n"+checklistHtml;
           let shadow = document.querySelector('joeherwig-checklist');
           shadow.shadowRoot.innerHTML = template.innerHTML;
+        }
+
+        async function addClickEventListener(){
+          let shadow = document.querySelector('joeherwig-checklist');
+          let checkedItems = JSON.parse(localStorage.getItem("checkedItems")) ? JSON.parse(localStorage.getItem("checkedItems")) : []; 
           shadow.shadowRoot.querySelectorAll('.item').forEach(checklistItem => {
             checklistItem.addEventListener("click", (event) => {
-              let newArrayItem = checklistItem.querySelector('.check').textContent.replace(/\s/g,'').replace(/&/g,'');
+              let newArrayItem = checklistItem.querySelector('.check').textContent.replace(/[\W_]+/g,'').replace(/&/g,'');
               if (event.currentTarget.classList.contains("completed")) {
                 event.currentTarget.classList.remove("completed")
                 checkedItems = checkedItems.filter(item => item !== newArrayItem);
@@ -156,22 +172,57 @@
                 checkedItems.push(newArrayItem);
               }
               localStorage.setItem("checkedItems", JSON.stringify(checkedItems));
+              console.log(JSON.stringify(checkedItems));
             });
           });
+          
+          /* --  */
+          shadow.shadowRoot.querySelector('#stdBtn').addEventListener("click", (event) => {
+            updateChecklist(["ADIRS","Seatbeltsigns","ATC","Windows"]);
+          })
+          /* -- */
+        }
+
+        async function hideRoleInChecklist(){
           if(hideRole) {
+            let shadow = document.querySelector('joeherwig-checklist');
             shadow.shadowRoot.querySelectorAll('.item.' + hideRole).forEach(checklistItem => {
               checklistItem.classList.add("hidden");
             });
           }
-          let checkedItems = JSON.parse(localStorage.getItem("checkedItems")) ? JSON.parse(localStorage.getItem("checkedItems")) : []; 
-          if (!initalized && checkedItems.length > 0) { 
+        }
+
+        async function updateChecklist(checkedItems){
+          console.log(JSON.stringify(checkedItems));
+          let checkedItemsLocal = [];
+          if (checkedItems.length > 0) { 
             checkedItems.forEach(checkedElement => {
-              const checkedNode = shadow.shadowRoot.querySelector('#'+checkedElement);
-              checkedNode.classList.add("completed");
+              checkedItemsLocal.push(checkedElement);
             })
             initalized = true;
           }
+          console.log(checkedItemsLocal);
+          let shadow = document.querySelector('joeherwig-checklist');
+          shadow.shadowRoot.querySelectorAll('.item').forEach(checklistItem => {
+            if (checkedItems.includes(checklistItem.id)) {
+              checklistItem.classList.add("completed")
+              checkedItems = checkedItems.filter(item => item !== checklistItem.id);
+            } else {
+              checklistItem.classList.remove("completed")
+              checkedItems.push(checkedItemsLocal);
+            }
+          })
+          localStorage.setItem("checkedItems", JSON.stringify(checkedItemsLocal));
+        }
 
+
+        getConfig()
+        .then(clConfig => {
+          buildChecklistFromJson(clConfig);
+          addClickEventListener();
+          hideRoleInChecklist();
+          checkedItems = JSON.parse(localStorage.getItem("checkedItems")) ? JSON.parse(localStorage.getItem("checkedItems")) : []; 
+          updateChecklist(checkedItems);
         });
       }
     }
