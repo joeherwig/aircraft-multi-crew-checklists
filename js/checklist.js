@@ -158,6 +158,13 @@
           shadow.shadowRoot.innerHTML = template.innerHTML;
         }
 
+        async function scrollIfReady(node){
+          let nextChecklist = node.parentElement.parentElement.nextElementSibling;
+          if (node.parentElement.querySelectorAll('.item:not(.completed)').length <= 0) {
+            nextChecklist.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+          }
+        }
+
         async function addClickEventListener(){
           let shadow = document.querySelector('joeherwig-checklist');
           let checkedItems = JSON.parse(localStorage.getItem("checkedItems")) ? JSON.parse(localStorage.getItem("checkedItems")) : []; 
@@ -171,10 +178,7 @@
                 event.currentTarget.classList.add("completed")
                 checkedItems.push(newArrayItem);
                 
-                let nextChecklist = event.currentTarget.parentElement.parentElement.nextElementSibling;
-                if (event.currentTarget.parentElement.querySelectorAll('.item:not(.completed)').length <= 0) {
-                  nextChecklist.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
-                }
+                scrollIfReady(event.currentTarget);
               }
               localStorage.setItem("checkedItems", JSON.stringify(checkedItems));
             });
@@ -183,7 +187,7 @@
 
           /* --  */
           shadow.shadowRoot.querySelector('#stdBtn').addEventListener("click", (event) => {
-            updateChecklist(["ADIRS","Seatbeltsigns","ATC","Windows"]);
+            updateChecklist(["Gearpinscovers","Fuelquantity","Seatbeltsigns","ADIRS","BaroRef"]);
           })
           /* -- */
         }
@@ -212,6 +216,7 @@
             if (checkedItems.includes(checklistItem.id)) {
               checklistItem.classList.add("completed")
               checkedItems = checkedItems.filter(item => item !== checklistItem.id);
+              scrollIfReady(checklistItem);
             } else {
               checklistItem.classList.remove("completed")
               checkedItems.push(checkedItemsLocal);

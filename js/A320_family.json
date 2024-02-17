@@ -115,6 +115,76 @@
           "role": "pf"
         }
       ]
+    },
+    {
+      "name": "Taxi checklist",
+      "triggeredBy": "Takeoff configuration test button pressed and cabin report received",
+      "items": [
+        {
+          "checkpoint": "Auto Brake",
+          "value": "max",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Squak",
+          "value": "confirm/set",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Eng mode selector",
+          "value": "As required",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Radar/PWS",
+          "value": "ON/Auto",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "T.O config",
+          "value": "Test",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "T.O memo",
+          "value": "Check no blue",
+          "role": "pm"
+        }
+      ]
+    },
+    {
+      "name": "Lineup checklist",
+      "triggeredBy": "Lineup clearance received and lineup flow pattern completed",
+      "items": [
+        {
+          "checkpoint": "TCAS",
+          "value": "TA only or TA/RA set",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "T.O RWY",
+          "value": "Confirm"
+        },
+        {
+          "checkpoint": "Apporach path",
+          "value": "Clear of traffic"
+        },
+        {
+          "checkpoint": "Exterior lights",
+          "value": "Set",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "PACs 1 & 2",
+          "value": "As required",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Cabin crew",
+          "value": "Advise",
+          "role": "pm"
+        }
+      ]
     }
   ]
 }
