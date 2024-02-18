@@ -32,18 +32,22 @@
       "triggeredBy": "Departure briefing completed",
       "items": [
         {
-          "checkpoint": "Beacon",
-          "value": "on",
-          "role": "pf"
-        },
-        {
           "checkpoint": "ATC",
           "value": "Set for operation",
           "role": "pm"
         },
         {
+          "checkpoint": "T.O Speeds & Thrust",
+          "value": "_____ 2x"
+        },
+        {
           "checkpoint": "Windows",
           "value": "check closed"
+        },
+        {
+          "checkpoint": "Beacon",
+          "value": "on",
+          "role": "pf"
         },
         {
           "checkpoint": "Doors/slides",
@@ -183,6 +187,94 @@
           "checkpoint": "Cabin crew",
           "value": "Advise",
           "role": "pm"
+        }
+      ]
+    },
+    {
+      "name": "Acceleration flow",
+      "triggeredBy": "acceleration altitude reached",
+      "items": [
+        {
+          "checkpoint": "Flaps",
+          "value": "zero",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Spoilers",
+          "value": "Disarm",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Landing Gear",
+          "value": "Check up",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Exterior lights",
+          "value": "Set",
+          "role": "pm"
+        }
+      ]
+    },
+    {
+      "name": "Approach checklist",
+      "triggeredBy": "Below 10,000 ft AAE and BARO REF set",
+      "items": [
+        {
+          "checkpoint": "Landing lights",
+          "value": "on",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Seatbelt signs",
+          "value": "on",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Baro Ref",
+          "value": "_____ 3x"
+        },
+        {
+          "checkpoint": "EFIS options",
+          "value": "CSTR"
+        },
+        {
+          "checkpoint": "LS push button",
+          "value": "As required"
+        },
+        {
+          "checkpoint": "NavAids NAV accuracy",
+          "value": "As required",
+          "role": "pf"
+        },
+        {
+          "checkpoint": "Eng mode selector",
+          "value": "As required",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Auto Brake",
+          "value": "_____",
+          "role":"pm"
+        }
+      ]
+    },
+    {
+      "name": "Landing checklist",
+      "triggeredBy": "Landing configuration set and cabin report received",
+      "items": [
+        {
+          "checkpoint": "Go-around ALT",
+          "value": "_____ ft SET"
+        },
+        {
+          "checkpoint": "Cabin crew",
+          "value": "Advised",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "ECAM memo",
+          "value": "LDG no blue"
         }
       ]
     }
