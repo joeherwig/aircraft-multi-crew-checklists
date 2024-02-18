@@ -121,7 +121,7 @@
       ]
     },
     {
-      "name": "Taxi checklist",
+      "name": "Taxi",
       "triggeredBy": "Takeoff configuration test button pressed and cabin report received",
       "items": [
         {
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "name": "Lineup checklist",
+      "name": "Lineup",
       "triggeredBy": "Lineup clearance received and lineup flow pattern completed",
       "items": [
         {
@@ -217,7 +217,7 @@
       ]
     },
     {
-      "name": "Approach checklist",
+      "name": "Approach",
       "triggeredBy": "Below 10,000 ft AAE and BARO REF set",
       "items": [
         {
@@ -260,7 +260,7 @@
       ]
     },
     {
-      "name": "Landing checklist",
+      "name": "Landing",
       "triggeredBy": "Landing configuration set and cabin report received",
       "items": [
         {
@@ -275,6 +275,73 @@
         {
           "checkpoint": "ECAM memo",
           "value": "LDG no blue"
+        }
+      ]
+    },
+    {
+      "name": "After Landing",
+      "triggeredBy": "on ground and decelerated",
+      "items": [
+        {
+          "checkpoint": "RADAR & PWS",
+          "value": "off",
+          "role": "pm"
+        }
+      ]
+    },
+    {
+      "name": "Parking",
+      "triggeredBy": "parking position reached",
+      "items": [
+        {
+          "checkpoint": "Park BRK or chocks",
+          "value": "Set",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Ground PWR / APU",
+          "value": "avail",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Engines",
+          "value": "off",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Wing Lights",
+          "value": "off",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Fuel pumps",
+          "value": "off",
+          "role": "pm"
+        }
+      ]
+    },
+    {
+      "name": "Securing",
+      "triggeredBy": "",
+      "items": [
+        {
+          "checkpoint": "Oxygen",
+          "value": "off",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "Emer EXIT LT",
+          "value": "off",
+          "role": "pm"
+        },
+        {
+          "checkpoint": "EFBs",
+          "value": "off"
+        },
+        {
+          "checkpoint": "Batteries",
+          "value": "off",
+          "role": "pf"
         }
       ]
     }
