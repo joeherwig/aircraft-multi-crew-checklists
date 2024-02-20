@@ -148,7 +148,7 @@
             checklistHtml += "\n<div id='"+checklist.name.replace(/[\W_]+/g,'')+"'>\n  <h2>"+checklist.name+"</h2>\n  <div class='"+checklist.name.replace(/[\W_]+/g,'')+"Cl'><p class='triggeredBy'>"+checklist.triggeredBy+"</p>";
             checklist.items.forEach(item =>{
               let roleClass = item.role !== undefined ? " " + item.role : "";
-              checklistHtml += "\n  <div class='item" + roleClass +"' id='"+item.checkpoint.replace(/[\W_]+/g,'').replace(/&/g,'')+"'>\n    <div class='check'>"+item.checkpoint+"</div>\n    <div class='value'>"+item.value+"</div>\n  </div>";
+              checklistHtml += "\n  <div class='item" + roleClass +"' id='"+checklist.name.replace(/[\W_]+/g,'')+"_"+item.checkpoint.replace(/[\W_]+/g,'')+"'>\n    <div class='check'>"+item.checkpoint+"</div>\n    <div class='value'>"+item.value+"</div>\n  </div>";
             })
             checklistHtml += "\n</div></div>"
           });
@@ -170,7 +170,7 @@
           let checkedItems = JSON.parse(localStorage.getItem("checkedItems")) ? JSON.parse(localStorage.getItem("checkedItems")) : []; 
           shadow.shadowRoot.querySelectorAll('.item').forEach(checklistItem => {
             checklistItem.addEventListener("click", (event) => {
-              let newArrayItem = checklistItem.querySelector('.check').textContent.replace(/[\W_]+/g,'').replace(/&/g,'');
+              let newArrayItem = checklistItem.querySelector('.check').parentElement.id;
               if (event.currentTarget.classList.contains("completed")) {
                 event.currentTarget.classList.remove("completed")
                 checkedItems = checkedItems.filter(item => item !== newArrayItem);
@@ -213,6 +213,7 @@
           console.log(checkedItemsLocal);
           let shadow = document.querySelector('joeherwig-checklist');
           shadow.shadowRoot.querySelectorAll('.item').forEach(checklistItem => {
+            console.log(checklistItem.id);
             if (checkedItems.includes(checklistItem.id)) {
               checklistItem.classList.add("completed")
               checkedItems = checkedItems.filter(item => item !== checklistItem.id);
