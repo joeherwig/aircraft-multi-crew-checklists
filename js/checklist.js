@@ -114,12 +114,17 @@
       super();
       this.attachShadow({ mode: 'open' });
       this.shadowRoot.append(template.content.cloneNode(true));
-      const queryString = window.location.search;
-      const urlParams = new URLSearchParams(queryString);
-      let initalized = false;
-      let checkedItems = [];
+    }
+    //window.onload = function init() {
+      connectedCallback() {
+        let _this = this;
+        document._currentScript = document._currentScript || document.currentScript;
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        let initalized = false;
+        let checkedItems = [];
 
-      window.onload = function init() {
+      function buildChecklist() {
         if (urlParams.has('reset')) { 
           localStorage.clear('checkedItems')
           urlParams.delete('reset');
@@ -135,11 +140,6 @@
           const clConfig = await response.json();
           return clConfig;
         };
-
-        async function log(clcompleted){
-          //clcompleted = document.querySelector('joeherwig-checklist').shadowRoot.querySelector('#BaroRef').parentElement.querySelectorAll('.item:not(.completed)').length > 0? "stay" : "next checklist";
-          console.log(clcompleted);
-        }
 
         async function buildChecklistFromJson(clConfig) {
           checklistHtml += "<h1>"+clConfig.aircraft+"</h1>";
@@ -202,7 +202,6 @@
         }
 
         async function updateChecklist(checkedItems){
-          console.log(JSON.stringify(checkedItems));
           let checkedItemsLocal = [];
           if (checkedItems.length > 0) { 
             checkedItems.forEach(checkedElement => {
@@ -210,10 +209,8 @@
             })
             initalized = true;
           }
-          console.log(checkedItemsLocal);
           let shadow = document.querySelector('joeherwig-checklist');
           shadow.shadowRoot.querySelectorAll('.item').forEach(checklistItem => {
-            console.log(checklistItem.id);
             if (checkedItems.includes(checklistItem.id)) {
               checklistItem.classList.add("completed")
               checkedItems = checkedItems.filter(item => item !== checklistItem.id);
@@ -236,13 +233,10 @@
           updateChecklist(checkedItems);
         });
       }
+      buildChecklist();//_this.getAttribute('icaocode'),_this.getAttribute('token'));
     }
     
-      connectedCallback() {
-        let _this = this;
-        document._currentScript = document._currentScript || document.currentScript;
-      };
-    }
+  };
 
   window.customElements.define('joeherwig-checklist', checklist);
 })();
