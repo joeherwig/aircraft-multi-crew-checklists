@@ -102,9 +102,6 @@
       .pmChecked {
         border-right: 5px solid rgba(69,145,80,1);
       }
-      h2 {
-        margin-top: 4em;
-      }
       </style>`
 
     template.innerHTML = styles + `
