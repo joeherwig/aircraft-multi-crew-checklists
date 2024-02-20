@@ -114,29 +114,29 @@
       super();
       this.attachShadow({ mode: 'open' });
       this.shadowRoot.append(template.content.cloneNode(true));
-    }
-    //window.onload = function init() {
-      connectedCallback() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      let initalized = false;
+      let checkedItems = [];
+
+      window.onload = function init() {
         let _this = this;
         document._currentScript = document._currentScript || document.currentScript;
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        let initalized = false;
-        let checkedItems = [];
 
-      function buildChecklist() {
         if (urlParams.has('reset')) { 
           localStorage.clear('checkedItems')
           urlParams.delete('reset');
           window.location = window.location.href.split("?")[0];
         };
         let hideRole = urlParams.has('hideRole') ? urlParams.get('hideRole') : "";
-        let url = "js/A320_family.json";
+        //let url = "js/A320_family.json";
         let checklistHtml = "";
         let clConfig = {};
 
-        async function getConfig() {
-          const response = await fetch(url);
+        async function getConfig(url) {
+          let fetchUrl = document.querySelector('joeherwig-checklist').getAttribute('checklistUrl') ? document.querySelector('joeherwig-checklist').getAttribute('checklistUrl') : "js/A320_family.json";
+          console.log(fetchUrl);
+          const response = await fetch(fetchUrl);
           const clConfig = await response.json();
           return clConfig;
         };
@@ -187,7 +187,7 @@
 
           /* --  */
           shadow.shadowRoot.querySelector('#stdBtn').addEventListener("click", (event) => {
-            updateChecklist(["Gearpinscovers","Fuelquantity","Seatbeltsigns","ADIRS","BaroRef"]);
+            updateChecklist(["Cockpitpreparation_Gearpinscovers","Cockpitpreparation_Fuelquantity","Cockpitpreparation_Seatbeltsigns","Cockpitpreparation_ADIRS","Cockpitpreparation_BaroRef","BeforeStart_ATC","BeforeStart_TOSpeedsThrust"]);
           })
           /* -- */
         }
@@ -233,10 +233,13 @@
           updateChecklist(checkedItems);
         });
       }
-      buildChecklist();//_this.getAttribute('icaocode'),_this.getAttribute('token'));
     }
     
-  };
+      connectedCallback() {
+        let _this = this;
+        document._currentScript = document._currentScript || document.currentScript;
+      };
+    }
 
   window.customElements.define('joeherwig-checklist', checklist);
 })();
