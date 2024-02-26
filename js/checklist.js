@@ -50,6 +50,10 @@
         padding-left: 5px;
         color: #333333;
         content: "☐";
+        flex-wrap: wrap;
+      }
+      .item span {
+        padding-left: 50px;
       }
 
       .item.completed {
@@ -114,29 +118,29 @@
       super();
       this.attachShadow({ mode: 'open' });
       this.shadowRoot.append(template.content.cloneNode(true));
-    }
-    //window.onload = function init() {
-      connectedCallback() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      let initalized = false;
+      let checkedItems = [];
+
+      window.onload = function init() {
         let _this = this;
         document._currentScript = document._currentScript || document.currentScript;
-        const queryString = window.location.search;
-        const urlParams = new URLSearchParams(queryString);
-        let initalized = false;
-        let checkedItems = [];
 
-      function buildChecklist() {
         if (urlParams.has('reset')) { 
           localStorage.clear('checkedItems')
           urlParams.delete('reset');
           window.location = window.location.href.split("?")[0];
         };
         let hideRole = urlParams.has('hideRole') ? urlParams.get('hideRole') : "";
-        let url = "js/A320_family.json";
+        //let url = "js/A320_family.json";
         let checklistHtml = "";
         let clConfig = {};
 
-        async function getConfig() {
-          const response = await fetch(url);
+        async function getConfig(url) {
+          let fetchUrl = document.querySelector('joeherwig-checklist').getAttribute('checklistUrl') ? document.querySelector('joeherwig-checklist').getAttribute('checklistUrl') : "js/A320_family.json";
+          console.log(fetchUrl);
+          const response = await fetch(fetchUrl);
           const clConfig = await response.json();
           return clConfig;
         };
@@ -144,12 +148,18 @@
         async function buildChecklistFromJson(clConfig) {
           checklistHtml += "<h1>"+clConfig.aircraft+"</h1>";
           checklistHtml += `<div class="filter"><div id="stdBtn">setToStandard</div></div>`;
+          let clNumber = 1;
           clConfig.checklists.forEach(checklist => {
             checklistHtml += "\n<div id='"+checklist.name.replace(/[\W_]+/g,'')+"'>\n  <h2>"+checklist.name+"</h2>\n  <div class='"+checklist.name.replace(/[\W_]+/g,'')+"Cl'><p class='triggeredBy'>"+checklist.triggeredBy+"</p>";
+            let clItemNumber = 1;
             checklist.items.forEach(item =>{
               let roleClass = item.role !== undefined ? " " + item.role : "";
-              checklistHtml += "\n  <div class='item" + roleClass +"' id='"+checklist.name.replace(/[\W_]+/g,'')+"_"+item.checkpoint.replace(/[\W_]+/g,'')+"'>\n    <div class='check'>"+item.checkpoint+"</div>\n    <div class='value'>"+item.value+"</div>\n  </div>";
+              checklistHtml += "\n  <div class='item" + roleClass +"' id='"+clNumber+'.'+clItemNumber+'_'+checklist.name.replace(/[\W_]+/g,'')+"_"+item.checkpoint.replace(/[\W_]+/g,'')+"'>\n    <div class='check'>"+item.checkpoint+"</div>\n    <div class='value'>"+item.value+"</div>";
+              //checklistHtml += item.hint ? "<div class='hint'>"+item.hint.replace(/\n/g,'<br>')+"</div>" : ""
+              checklistHtml += "\n  </div>";
+              clItemNumber++;
             })
+            clNumber++;
             checklistHtml += "\n</div></div>"
           });
           checklistHtml += `<div class="filter"><div class="resetBtn"><a href="?reset">reset checklist</a></div></div>`;
@@ -187,7 +197,7 @@
 
           /* --  */
           shadow.shadowRoot.querySelector('#stdBtn').addEventListener("click", (event) => {
-            updateChecklist(["Gearpinscovers","Fuelquantity","Seatbeltsigns","ADIRS","BaroRef"]);
+            updateChecklist(["Cockpitpreparation_Gearpinscovers","Cockpitpreparation_Fuelquantity","Cockpitpreparation_Seatbeltsigns","Cockpitpreparation_ADIRS","Cockpitpreparation_BaroRef","BeforeStart_ATC","BeforeStart_TOSpeedsThrust"]);
           })
           /* -- */
         }
@@ -233,10 +243,13 @@
           updateChecklist(checkedItems);
         });
       }
-      buildChecklist();//_this.getAttribute('icaocode'),_this.getAttribute('token'));
     }
     
-  };
+      connectedCallback() {
+        let _this = this;
+        document._currentScript = document._currentScript || document.currentScript;
+      };
+    }
 
   window.customElements.define('joeherwig-checklist', checklist);
 })();
