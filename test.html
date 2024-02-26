@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <div id="output"></div>
+    <script>
+      const wssUrl = "wss://multi-crew-checklist-ws.webpubsub.azure.com/client/hubs/Hub?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ3c3M6Ly9tdWx0aS1jcmV3LWNoZWNrbGlzdC13cy53ZWJwdWJzdWIuYXp1cmUuY29tL2NsaWVudC9odWJzL0h1YiIsImlhdCI6MTcwODk4MTMyMywiZXhwIjoxNzA4OTg0OTIzLCJyb2xlIjpbIndlYnB1YnN1Yi5zZW5kVG9Hcm91cCIsIndlYnB1YnN1Yi5qb2luTGVhdmVHcm91cCJdfQ.Eyh2Np7O8DJuUAANtc18GlT9Yb69EePqoNAqaTPOz04";
+      (async function () {
+        let ws = new WebSocket(wssUrl, 'json.webpubsub.azure.v1');
+        ws.onopen = () => {
+          console.log('connected');
+          let ackId = 0;
+          ws.send(JSON.stringify({
+            type: 'joinGroup',
+            group: 'A20N_EWG22G'
+          }));
+
+          ws.addEventListener('message', (event)=>{
+            console.log(event.data);
+            let output = document.querySelector('#output');
+            let d = document.createElement('p');
+            if (JSON.parse(event.data).group) {
+              d.innerText = JSON.stringify(JSON.parse(event.data).data);
+              output.appendChild(d);
+            } 
+          });
+          const arr = JSON.stringify(["1.1_Cockpitpreparation_Gearpinscovers","1.2_Cockpitpreparation_Fuelquantity","1.3_Cockpitpreparation_Seatbeltsigns","1.4_Cockpitpreparation_ADIRS","1.5_Cockpitpreparation_BaroRef","2.1_BeforeStart_ATC","2.2_BeforeStart_TOSpeedsThrust","2.3_BeforeStart_Windows","2.4_BeforeStart_Beacon","2.5_BeforeStart_Doorsslides","2.6_BeforeStart_Thrustlevers","2.7_BeforeStart_Parkingbrakehandle"]);
+          const msg = {
+            "type": "sendToGroup",
+            "group": "A20N_EWG22G",
+            "dataType" : "text",
+            "data": arr// data can be string or valid json token depending on the dataType 
+          };
+          ws.send(JSON.stringify(msg));
+        };
+
+      })();
+    </script>
+  </body>
+</html>
