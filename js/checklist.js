@@ -50,6 +50,10 @@
         padding-left: 5px;
         color: #333333;
         content: "☐";
+        flex-wrap: wrap;
+      }
+      .item span {
+        padding-left: 50px;
       }
 
       .item.completed {
@@ -144,12 +148,18 @@
         async function buildChecklistFromJson(clConfig) {
           checklistHtml += "<h1>"+clConfig.aircraft+"</h1>";
           checklistHtml += `<div class="filter"><div id="stdBtn">setToStandard</div></div>`;
+          let clNumber = 1;
           clConfig.checklists.forEach(checklist => {
             checklistHtml += "\n<div id='"+checklist.name.replace(/[\W_]+/g,'')+"'>\n  <h2>"+checklist.name+"</h2>\n  <div class='"+checklist.name.replace(/[\W_]+/g,'')+"Cl'><p class='triggeredBy'>"+checklist.triggeredBy+"</p>";
+            let clItemNumber = 1;
             checklist.items.forEach(item =>{
               let roleClass = item.role !== undefined ? " " + item.role : "";
-              checklistHtml += "\n  <div class='item" + roleClass +"' id='"+checklist.name.replace(/[\W_]+/g,'')+"_"+item.checkpoint.replace(/[\W_]+/g,'')+"'>\n    <div class='check'>"+item.checkpoint+"</div>\n    <div class='value'>"+item.value+"</div>\n  </div>";
+              checklistHtml += "\n  <div class='item" + roleClass +"' id='"+clNumber+'.'+clItemNumber+'_'+checklist.name.replace(/[\W_]+/g,'')+"_"+item.checkpoint.replace(/[\W_]+/g,'')+"'>\n    <div class='check'>"+item.checkpoint+"</div>\n    <div class='value'>"+item.value+"</div>";
+              //checklistHtml += item.hint ? "<div class='hint'>"+item.hint.replace(/\n/g,'<br>')+"</div>" : ""
+              checklistHtml += "\n  </div>";
+              clItemNumber++;
             })
+            clNumber++;
             checklistHtml += "\n</div></div>"
           });
           checklistHtml += `<div class="filter"><div class="resetBtn"><a href="?reset">reset checklist</a></div></div>`;
