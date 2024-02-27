@@ -173,7 +173,7 @@
             clNumber++;
             checklistHtml += "\n</div></div>"
           });
-          checklistHtml += `<div class="filter"><div class="resetBtn"><a href="`+queryString+`&reset">reset checklist</a></div></div>`;
+          checklistHtml += `<div class="filter"><div class="resetBtn"><a href="`+window.location.origin + window.location.pathname + '?' + urlParams+`&reset">reset checklist</a></div></div>`;
           template.innerHTML += "\n\n"+checklistHtml;
           let shadow = document.querySelector('joeherwig-checklist');
           shadow.shadowRoot.innerHTML = template.innerHTML;
