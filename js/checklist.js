@@ -139,7 +139,6 @@
           location.href = reloadUrl;
         };
         
-        
         async function getConfig(fetchUrl) {
           switch (true) {
             case urlParams.has('checklistUrl'):
@@ -159,7 +158,7 @@
 
         async function buildChecklistFromJson(clConfig) {
           checklistHtml += "<h1>"+clConfig.aircraft+"</h1>";
-          checklistHtml += `<div class="filter"><div id="stdBtn">setToStandard</div></div>`;
+          //checklistHtml += `<div class="filter"><div id="stdBtn">setToStandard</div></div>`;
           let clNumber = 1;
           clConfig.checklists.forEach(checklist => {
             checklistHtml += "\n<div id='"+checklist.name.replace(/[\W_]+/g,'')+"'>\n  <h2>"+checklist.name+"</h2>\n  <div class='"+checklist.name.replace(/[\W_]+/g,'')+"Cl'><p class='triggeredBy'>"+checklist.triggeredBy+"</p>";
