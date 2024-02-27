@@ -1,6 +1,7 @@
 # aircraft-multi-crew-checklists
 A template to easily offer web-based responsive multi-crew checklists
-<img src="https://github.com/joeherwig/aircraft-multi-crew-checklists/img/Multi-crew_SOP+checklist.png" alt="multi-crew-checklist-image" width="150" height="auto">
+
+<img src="https://raw.githubusercontent.com/joeherwig/aircraft-multi-crew-checklists/main/img/Multi-crew_SOP%2Bchecklist.png" alt="multi-crew-checklist-image" width="300" height="auto">
 
 # Implement it
 to use the responsive checklist in your web project, just grab it from the open source repo
