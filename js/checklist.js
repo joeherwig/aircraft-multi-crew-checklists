@@ -108,11 +108,6 @@
       }
       </style>`
 
-    template.innerHTML = styles + `
-      <div class="filter">
-        <div class="all"><a href="?">BOTH</a></div>
-        <div class="pf"><a href="?hideRole=pm">Pilot flying</a></div>     
-        <div class="pm"><a href="?hideRole=pf">Pilot monitoring</a></div></div>`;
   class checklist extends HTMLElement {
     constructor() {
       super();
@@ -120,26 +115,43 @@
       this.shadowRoot.append(template.content.cloneNode(true));
       const queryString = window.location.search;
       const urlParams = new URLSearchParams(queryString);
+      let fetchUrl;
       let initalized = false;
       let checkedItems = [];
-
+      let checklistHtml = "";
+      let hideRole = urlParams.has('hideRole') ? urlParams.get('hideRole') : "";
+      urlParams.delete('hideRole');
+      checklistHtml = styles + `
+      <div class="filter">
+        <div class="all"><a href="`+window.location.origin + window.location.pathname + '?' + urlParams+`&">BOTH</a></div>
+        <div class="pf"><a href="`+window.location.origin + window.location.pathname + '?' + urlParams+`&hideRole=pm">Pilot flying</a></div>     
+        <div class="pm"><a href="`+window.location.origin + window.location.pathname + '?' + urlParams+`&hideRole=pf">Pilot monitoring</a></div></div>`;
+      let clConfig = {};
+      
       window.onload = function init() {
         let _this = this;
         document._currentScript = document._currentScript || document.currentScript;
-
+        
         if (urlParams.has('reset')) { 
           localStorage.clear('checkedItems')
           urlParams.delete('reset');
-          window.location = window.location.href.split("?")[0];
+          const reloadUrl = window.location.origin + window.location.pathname + '?' + urlParams;
+          location.href = reloadUrl;
         };
-        let hideRole = urlParams.has('hideRole') ? urlParams.get('hideRole') : "";
-        //let url = "js/A320_family.json";
-        let checklistHtml = "";
-        let clConfig = {};
-
-        async function getConfig(url) {
-          let fetchUrl = document.querySelector('joeherwig-checklist').getAttribute('checklistUrl') ? document.querySelector('joeherwig-checklist').getAttribute('checklistUrl') : "js/A320_family.json";
-          console.log(fetchUrl);
+        
+        
+        async function getConfig(fetchUrl) {
+          switch (true) {
+            case urlParams.has('checklistUrl'):
+              fetchUrl = urlParams.get('checklistUrl');
+              break;
+            case document.querySelector('joeherwig-checklist').getAttribute('checklistUrl'):
+              fetchUrl = document.querySelector('joeherwig-checklist').getAttribute('checklistUrl');
+              break;
+            default:
+              fetchUrl = "js/A320_family.json";
+              break;
+          } 
           const response = await fetch(fetchUrl);
           const clConfig = await response.json();
           return clConfig;
@@ -162,7 +174,7 @@
             clNumber++;
             checklistHtml += "\n</div></div>"
           });
-          checklistHtml += `<div class="filter"><div class="resetBtn"><a href="?reset">reset checklist</a></div></div>`;
+          checklistHtml += `<div class="filter"><div class="resetBtn"><a href="`+queryString+`&reset">reset checklist</a></div></div>`;
           template.innerHTML += "\n\n"+checklistHtml;
           let shadow = document.querySelector('joeherwig-checklist');
           shadow.shadowRoot.innerHTML = template.innerHTML;
