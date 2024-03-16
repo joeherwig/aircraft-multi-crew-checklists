@@ -2,347 +2,68 @@
   "aircraft": "Kodiak K100 checklist",
   "checklists": [
     {
-      "name": "Cockpit preparation",
+      "name": "Before engine start",
+      "triggeredBy": "Walk around check completed",
+      "items": [
+        {"checkpoint":"Fuel/Load-Manager", "value":"SET/CHECK CG"},
+        {"checkpoint":"Preflight Inspection", "value":"COMPLETED"},
+        {"checkpoint":"Tie-Downs & Wheel Chocks", "value":"REMOVED"},
+        {"checkpoint":"Passenger Briefing", "value":"COMPLETED"},
+        {"checkpoint":"Cabin Doors", "value":"LATCHED"},
+        {"checkpoint":"Seat, Belts, Harness", "value":"ADJUSTED & LOCKED"},
+        {"checkpoint":"Parking Brake", "value":"SET"},
+        {"checkpoint":"Master Switch", "value":"ON"},
+        {"checkpoint":"Avionics Master Switch", "value":"ON"},
+        {"checkpoint":"Nav Lights", "value":"AS REQ/ON"},
+        {"checkpoint":"Inertial Seperator (Engine Inlet)", "value":"AS REQ/NORM", "hint":"select BYPASS if visible moisture & OAT < 4°C\nselect BYPASS if on loose ground/gravel/grass"},
+        {"checkpoint":"Fuel Selector Valves (OHP)", "value":"LEFT and RIGHT ON"},
+        {"checkpoint":"Firewall Fue Shutoff (CP)", "value":"FUEL ON (pushed in)"},
+        {"checkpoint":"Emergency Power Lever", "value":"NORMAL"},
+        {"checkpoint":"Power Lever", "value":"IDLE"},
+        {"checkpoint":"Propeller Lever", "value":"FEATHER"},
+        {"checkpoint":"Fuel Condition Lever", "value":"CUTOFF"},
+        {"checkpoint":"Wing Flaps", "value":"UP"},
+        {"checkpoint":"Circuit Brakers", "value":"CHECK IN"},
+        {"checkpoint":"Internal Lights", "value":"AS REQ"},
+        {"checkpoint":"Cabin Heat", "value":"OFF"},
+        {"checkpoint":"Oxygen Panel", "value":"TEST ON, then OFF"}
+      ]
+    },
+    {
+      "name": "Engine Start",
       "triggeredBy": "Departure briefing completed",
       "items": [
-        {
-          "checkpoint": "Gear pins & covers",
-          "value": "removed"
-        },
-        {
-          "checkpoint": "Fuel quantity",
-          "value": "_____kg/lbs"
-        },
-        {
-          "checkpoint": "Seatbelt signs",
-          "value": "on"
-        },
-        {
-          "checkpoint": "ADIRS",
-          "value": "NAV"
-        },
-        {
-          "checkpoint": "Baro Ref",
-          "value": "_____ 3x"
-        }
-      ]
-    },
-    {
-      "name": "Before Start",
-      "triggeredBy": "Departure briefing completed",
-      "items": [
-        {
-          "checkpoint": "ATC",
-          "value": "Set for operation",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "T.O Speeds & Thrust",
-          "value": "_____ 2x"
-        },
-        {
-          "checkpoint": "Windows",
-          "value": "check closed"
-        },
-        {
-          "checkpoint": "Beacon",
-          "value": "on",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "Doors/slides",
-          "value": "check closed/armed"
-        },
-        {
-          "checkpoint": "Thrust levers",
-          "value": "idle",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "Parking brake handle",
-          "value": "on",
-          "role":"pf"
-        }
-      ]
-    },
-    {
-      "name": "After Start",
-      "triggeredBy": "Hand signal from ground personnel",
-      "items": [
-        {
-          "checkpoint": "Eng mode selector",
-          "value": "Normal",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "APU bleed",
-          "value": "Off",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "Anti ice",
-          "value": "As required",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "APU master switch",
-          "value": "Off",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "Spoilers",
-          "value": "Arm",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "Rudder",
-          "value": "Check Zero ±0.3",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "Flaps",
-          "value": "Set",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "Pitch trim",
-          "value": "Set",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "ECAM status",
-          "value": "check"
-        },
-        {
-          "checkpoint": "NW STRG DISC",
-          "value": "Check not displayed",
-          "role": "pf"
-        }
-      ]
-    },
-    {
-      "name": "Taxi",
-      "triggeredBy": "Takeoff configuration test button pressed and cabin report received",
-      "items": [
-        {
-          "checkpoint": "Auto Brake",
-          "value": "max",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Squak",
-          "value": "confirm/set",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Eng mode selector",
-          "value": "As required",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Radar/PWS",
-          "value": "ON/Auto",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "T.O config",
-          "value": "Test",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "T.O memo",
-          "value": "Check no blue",
-          "role": "pm"
-        }
-      ]
-    },
-    {
-      "name": "Lineup",
-      "triggeredBy": "Lineup clearance received and lineup flow pattern completed",
-      "items": [
-        {
-          "checkpoint": "TCAS",
-          "value": "TA only or TA/RA set",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "T.O RWY",
-          "value": "Confirm"
-        },
-        {
-          "checkpoint": "Apporach path",
-          "value": "Clear of traffic"
-        },
-        {
-          "checkpoint": "Exterior lights",
-          "value": "Set",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "PACs 1 & 2",
-          "value": "As required",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Cabin crew",
-          "value": "Advise",
-          "role": "pm"
-        }
-      ]
-    },
-    {
-      "name": "Acceleration flow",
-      "triggeredBy": "acceleration altitude reached",
-      "items": [
-        {
-          "checkpoint": "Flaps",
-          "value": "zero",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Spoilers",
-          "value": "Disarm",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Landing Gear",
-          "value": "Check up",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Exterior lights",
-          "value": "Set",
-          "role": "pm"
-        }
-      ]
-    },
-    {
-      "name": "Approach",
-      "triggeredBy": "Below 10,000 ft AAE and BARO REF set",
-      "items": [
-        {
-          "checkpoint": "Landing lights",
-          "value": "on",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Seatbelt signs",
-          "value": "on",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Baro Ref",
-          "value": "_____ 3x"
-        },
-        {
-          "checkpoint": "EFIS options",
-          "value": "CSTR"
-        },
-        {
-          "checkpoint": "LS push button",
-          "value": "As required"
-        },
-        {
-          "checkpoint": "NavAids NAV accuracy",
-          "value": "As required",
-          "role": "pf"
-        },
-        {
-          "checkpoint": "Eng mode selector",
-          "value": "As required",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Auto Brake",
-          "value": "_____",
-          "role":"pm"
-        }
-      ]
-    },
-    {
-      "name": "Landing",
-      "triggeredBy": "Landing configuration set and cabin report received",
-      "items": [
-        {
-          "checkpoint": "Go-around ALT",
-          "value": "_____ ft SET"
-        },
-        {
-          "checkpoint": "Cabin crew",
-          "value": "Advised",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "ECAM memo",
-          "value": "LDG no blue"
-        }
-      ]
-    },
-    {
-      "name": "After Landing",
-      "triggeredBy": "on ground and decelerated",
-      "items": [
-        {
-          "checkpoint": "RADAR & PWS",
-          "value": "off",
-          "role": "pm"
-        }
-      ]
-    },
-    {
-      "name": "Parking",
-      "triggeredBy": "parking position reached",
-      "items": [
-        {
-          "checkpoint": "Park BRK or chocks",
-          "value": "Set",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Ground PWR / APU",
-          "value": "avail",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Engines",
-          "value": "off",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Wing Lights",
-          "value": "off",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Fuel pumps",
-          "value": "off",
-          "role": "pm"
-        }
-      ]
-    },
-    {
-      "name": "Securing",
-      "triggeredBy": "",
-      "items": [
-        {
-          "checkpoint": "Oxygen",
-          "value": "off",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "Emer EXIT LT",
-          "value": "off",
-          "role": "pm"
-        },
-        {
-          "checkpoint": "EFBs",
-          "value": "off"
-        },
-        {
-          "checkpoint": "Batteries",
-          "value": "off",
-          "role": "pf"
-        }
+        {"checkpoint":"Parking Brake", "value":"SET"},
+        {"checkpoint":"Flight Controls", "value":"FREE and CORRECT"},
+        {"checkpoint":"Flight Instruments", "value":"CHECK"},
+        {"checkpoint":"Aileron, Elevator, Ruder Trim", "value":"SYSTEM CHECK"},
+        {"checkpoint":"Inertial Seperator (Engine Inlet)", "value":"SYSTEM CHECK"},
+        {"checkpoint":"Power Lever", "value":"300 FT LB"},
+        {"checkpoint":"Overspeed Governor", "value":"SYSTEM CHECK"},
+        {"checkpoint":"Power Lever", "value":"IDLE"},
+        {"checkpoint":"Parking Brake", "value":"SET"},
+        {"checkpoint":"Aux Fuel Pump", "value":"ON"},
+        {"checkpoint":"Fuel Selectors", "value":"RECHECK LEFT & RIGHT ON"},
+        {"checkpoint":"Firewall Fuel Shutoff", "value":"RECHECK FUEL ON (full in)"},
+        {"checkpoint":"Fuel Quantity", "value":"CHECK"},
+        {"checkpoint":"Harness Lever (OHP)", "value":"LOCK"},
+        {"checkpoint":"Wing Flaps", "value":"SET FOR TAKEOFF / 20°"},
+        {"checkpoint":"Elevator Trim", "value":"SET FOR TAKEOFF"},
+        {"checkpoint":"Rudder Trim", "value":"SET FOR TAKEOFF / ~ 25% Right"},
+        {"checkpoint":"Aileron Trim", "value":"SET FOR TAKE OFF / 5-6 Clicks Right"},
+        {"checkpoint":"Inertial Seperator (Engine Inlet)", "value":"AS REQ"},
+        {"checkpoint":"Pitot Static Heat", "value":"AS REQ"},
+        {"checkpoint":"ATC Clearance", "value":"AS REQ"},
+        {"checkpoint":"Start Replay-Tool", "value":"IF REQ"},
+        {"checkpoint":"Radios/Avionics", "value":"SET"},
+        {"checkpoint":"Altimeter", "value":"RECHECK SET LOCAL"},
+        {"checkpoint":"Autopilot", "value":"SET"},
+        {"checkpoint":"Transponder", "value":"SET & ON"},
+        {"checkpoint":"Landing Lights", "value":"AS REQ / ON"},
+        {"checkpoint":"Taxi Lights", "value":"OFF"},
+        {"checkpoint":"Strobe Lights", "value":"ON"},
+        {"checkpoint":"Propeller Lever", "value":"MAX. RPM (full fwd)"},
+        {"checkpoint":"Fuel Condition Lever", "value":"HIGH IDLE (full fwd)"}
       ]
     }
   ]
