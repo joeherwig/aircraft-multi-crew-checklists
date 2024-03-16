@@ -144,7 +144,7 @@
             case urlParams.has('checklistUrl'):
               fetchUrl = urlParams.get('checklistUrl');
               break;
-            case document.querySelector('joeherwig-checklist').getAttribute('checklistUrl'):
+            case (document.querySelector('joeherwig-checklist').getAttribute('checklistUrl') !== null):
               fetchUrl = document.querySelector('joeherwig-checklist').getAttribute('checklistUrl');
               break;
             default:
